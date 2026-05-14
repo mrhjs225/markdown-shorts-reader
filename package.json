@@ -3,8 +3,9 @@
   "displayName": "MD Shorts",
   "description": "Read long Markdown files as short, focused cards in VS Code.",
   "version": "0.1.0",
-  "publisher": "local-dev",
+  "publisher": "Jinseok Heo",
   "license": "MIT",
+  "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -88,5 +89,10 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1",
     "vitest": "^3.1.3"
+  },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/mrhjs225/markdown-shorts-reader"
   }
+  
 }
