@@ -1,0 +1,92 @@
+{
+  "name": "md-shorts",
+  "displayName": "MD Shorts",
+  "description": "Read long Markdown files as short, focused cards in VS Code.",
+  "version": "0.1.0",
+  "publisher": "local-dev",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:mdShorts.openReader"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mdShorts.openReader",
+        "title": "MD Shorts: Open Reader"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "mdShorts.openReader",
+          "when": "resourceLangId == markdown",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "MD Shorts",
+      "properties": {
+        "mdShorts.maxCardChars": {
+          "type": "number",
+          "default": 700,
+          "minimum": 200,
+          "description": "Maximum preferred character count for a reading card."
+        },
+        "mdShorts.minCardChars": {
+          "type": "number",
+          "default": 120,
+          "minimum": 0,
+          "description": "Minimum preferred character count before merging small cards."
+        },
+        "mdShorts.rememberPosition": {
+          "type": "boolean",
+          "default": true,
+          "description": "Remember the last read card for each Markdown document."
+        },
+        "mdShorts.openBeside": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open the reader beside the current editor."
+        },
+        "mdShorts.autoRefresh": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically refresh cards when the Markdown document changes."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "test": "vitest run",
+    "lint": "eslint src test --ext ts",
+    "format": "prettier --write .",
+    "check": "npm run compile && npm test"
+  },
+  "dependencies": {
+    "mdast-util-to-markdown": "^2.1.2",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "@types/node": "^20.17.50",
+    "@types/vscode": "^1.90.0",
+    "esbuild": "^0.25.4",
+    "eslint": "^9.27.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1",
+    "vitest": "^3.1.3"
+  }
+}

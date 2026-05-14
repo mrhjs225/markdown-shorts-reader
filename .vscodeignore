@@ -1,0 +1,7 @@
+node_modules
+src
+test
+architecture.md
+eslint.config.mjs
+tsconfig.json
+*.vsix
