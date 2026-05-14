@@ -4,7 +4,7 @@
   "description": "Read long Markdown files as short, focused cards in VS Code.",
   "version": "1.0.0",
   "publisher": "JinseokHeo",
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "icon": "assets/icon.png",
   "repository": {
     "type": "git",
