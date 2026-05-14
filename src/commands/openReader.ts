@@ -21,6 +21,8 @@ type WebviewMessage =
       typeFilter?: ReadingCardType | "all";
       codeWrap?: boolean;
       showBookmarksOnly?: boolean;
+      tocOpen?: boolean;
+      focusMode?: boolean;
     };
 
 export async function openReader(context: vscode.ExtensionContext): Promise<void> {
@@ -92,7 +94,9 @@ export async function openReader(context: vscode.ExtensionContext): Promise<void
     initialCollapsedCodeCardIds: previousState?.collapsedCodeCardIds,
     initialTypeFilter: previousState?.typeFilter,
     initialCodeWrap: previousState?.codeWrap,
-    initialShowBookmarksOnly: previousState?.showBookmarksOnly
+    initialShowBookmarksOnly: previousState?.showBookmarksOnly,
+    initialTocOpen: previousState?.tocOpen,
+    initialFocusMode: previousState?.focusMode
   });
 
   panel.webview.onDidReceiveMessage(async (message: WebviewMessage) => {
@@ -120,6 +124,8 @@ export async function openReader(context: vscode.ExtensionContext): Promise<void
           : previousState?.typeFilter,
         codeWrap: message.codeWrap,
         showBookmarksOnly: message.showBookmarksOnly,
+        tocOpen: message.tocOpen,
+        focusMode: message.focusMode,
         updatedAt: Date.now()
       });
     }

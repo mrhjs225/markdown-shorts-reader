@@ -49,6 +49,8 @@ export type StoredReadingState = {
   typeFilter?: ReadingCardType | "all";
   codeWrap?: boolean;
   showBookmarksOnly?: boolean;
+  tocOpen?: boolean;
+  focusMode?: boolean;
   updatedAt: number;
 };
 
