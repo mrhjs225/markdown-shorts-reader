@@ -108,6 +108,31 @@ graph TD
     expect(tableCard?.meta?.wordCount).toBeGreaterThan(0);
   });
 
+  it("keeps long tables as a single table card without splitting or merging", () => {
+    const headerLines = ["| File | Class/Function | Description |", "| --- | --- | --- |"];
+    const rowLines = Array.from({ length: 20 }, (_, index) => {
+      const filler = "x".repeat(80);
+      return `| src/file_${index}.py | doThing${index}() | ${filler} |`;
+    });
+    const markdown = `### Main files
+
+${[...headerLines, ...rowLines].join("\n")}
+
+Trailing paragraph.
+`;
+
+    const cards = chunkMarkdown(markdown);
+    const tableCards = cards.filter((card) => card.type === "table");
+
+    expect(tableCards).toHaveLength(1);
+    const tableCard = tableCards[0];
+    expect(tableCard.content.length).toBeGreaterThan(1000);
+    expect(tableCard.content).toContain("| File | Class/Function | Description |");
+    expect(tableCard.content).toContain("| --- | --- | --- |");
+    expect(tableCard.content.split("\n").length).toBeGreaterThan(headerLines.length + rowLines.length - 1);
+    expect(cards.some((card) => card.type === "mixed" && card.content.includes("|"))).toBe(false);
+  });
+
   it("adds a document review card for heading jumps and empty sections", () => {
     const markdown = `# Intro
 

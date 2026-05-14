@@ -4,7 +4,12 @@ const SENTENCE_BOUNDARY = /(?<=[.!?。！？]|다\.|요\.|음\.)\s+/u;
 
 export function splitLongCards(cards: ReadingCard[], maxChars = 1000): ReadingCard[] {
   return cards.flatMap((card) => {
-    if (card.type === "code" || card.type === "image" || card.content.length <= maxChars) {
+    if (
+      card.type === "code" ||
+      card.type === "image" ||
+      card.type === "table" ||
+      card.content.length <= maxChars
+    ) {
       return [card];
     }
 

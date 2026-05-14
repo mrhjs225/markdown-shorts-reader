@@ -3,3 +3,6 @@ node_modules/
 .vscode-test/
 coverage/
 npm-debug.log*
+
+AGENTS.md
+CLAUDE.md

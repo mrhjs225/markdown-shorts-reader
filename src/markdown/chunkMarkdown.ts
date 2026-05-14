@@ -211,6 +211,7 @@ function shouldNeverMerge(card: ReadingCard): boolean {
     card.type === "heading" ||
     card.type === "code" ||
     card.type === "image" ||
+    card.type === "table" ||
     card.type === "thematicBreak" ||
     card.type === "review"
   );

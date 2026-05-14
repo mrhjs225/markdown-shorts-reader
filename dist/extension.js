@@ -11739,7 +11739,7 @@ function extractText(node2) {
 var SENTENCE_BOUNDARY = /(?<=[.!?。！？]|다\.|요\.|음\.)\s+/u;
 function splitLongCards(cards, maxChars = 1e3) {
   return cards.flatMap((card) => {
-    if (card.type === "code" || card.type === "image" || card.content.length <= maxChars) {
+    if (card.type === "code" || card.type === "image" || card.type === "table" || card.content.length <= maxChars) {
       return [card];
     }
     return splitTextCard(card, Math.max(400, Math.min(700, maxChars)));
@@ -11938,7 +11938,7 @@ function shouldTryMerge(card, minCardChars) {
   return card.content.length < minCardChars || card.type === "mixed";
 }
 function shouldNeverMerge(card) {
-  return card.type === "heading" || card.type === "code" || card.type === "image" || card.type === "thematicBreak" || card.type === "review";
+  return card.type === "heading" || card.type === "code" || card.type === "image" || card.type === "table" || card.type === "thematicBreak" || card.type === "review";
 }
 function canMerge(previous3, next, maxChars) {
   if (shouldNeverMerge(previous3) || shouldNeverMerge(next)) {
