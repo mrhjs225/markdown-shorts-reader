@@ -3,7 +3,7 @@
   "displayName": "MD Shorts",
   "description": "Read long Markdown files as short, focused cards in VS Code.",
   "version": "0.1.0",
-  "publisher": "Jinseok Heo",
+  "publisher": "JinseokHeo",
   "license": "MIT",
   "icon": "assets/icon.png",
   "engines": {
