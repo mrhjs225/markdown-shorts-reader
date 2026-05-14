@@ -1,7 +1,12 @@
 node_modules
 src
 test
+docs
+.vscode
+.gitignore
+.prettierrc.json
 architecture.md
 eslint.config.mjs
+esbuild.js
 tsconfig.json
 *.vsix
